@@ -11,7 +11,18 @@ namespace TestConsole
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            if (args.Length > 0)
+            {
+                var hostname = args[0];
+                Console.WriteLine("Pinging {0}", hostname);
+
+                if (libping.Pinger.isAccessible(hostname)) {
+                    Console.WriteLine("{0} is accessible :)", hostname);
+                }
+                else {
+                    Console.WriteLine("{0} is NOT accessible...", hostname);
+                }
+            }
         }
     }
 }
