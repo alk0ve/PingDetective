@@ -1,14 +1,13 @@
 
+META: write tasks, not notes (i.e. "develop X", not "X should be different"), and make sure each task can be completed by itself
 
 TASKS:
- - make isAccessible() accept a list of hostnames/IPs and return a list of bools
-
- - second class in libping for holding a list, keeping state and popping notifications
-	- ACTUALLY, THIS NEEDS A DESIGN - MOCK UP SOME CLASSES @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+ - test status tracker class in console app
 
  - make bare-bones UI implementation
 	- copy from SerialPop and remove anything irrelevant
 	- should have hostname list in configuration, popups for inaccessible IPs and that's it
+	- invoking the status tracker class should happen 1/s, but the call also takes time so you should keep track of time and sleep not 1s but the time left (which will be probably less)
 
  - TESTABILITY HACK: add #ifdef to isAccessible() to make it check for existence of files in a specific folder instead of pinging
 	- this way I can test the UI separately	

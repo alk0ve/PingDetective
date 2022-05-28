@@ -16,7 +16,7 @@ namespace TestConsole
                 var hostname = args[0];
                 Console.WriteLine("Pinging {0}", hostname);
 
-                if (libping.Pinger.isAccessible(hostname)) {
+                if (libping.SimplePing.isAccessible(hostname)) {
                     Console.WriteLine("{0} is accessible :)", hostname);
                 }
                 else {

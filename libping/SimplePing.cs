@@ -3,9 +3,9 @@ using System.Text;
 
 namespace libping
 {
-    public class Pinger
+    public class SimplePing
     {
-        public static bool isAccessible(string hostnameOrIP)
+        public static bool isAccessible(string hostnameOrIP, int timeoutMS = 500, int ttl = 64)
         {
             bool accessible = false;
             Ping pinger = null;
@@ -15,9 +15,8 @@ namespace libping
                 pinger = new Ping();
 
                 PingOptions options = new PingOptions();
-                int timeoutMS = 500; // TODO make configurable
                 options.DontFragment = true;
-                options.Ttl = 64; // TODO make configurable
+                options.Ttl = ttl;
 
                 string data = "putonmybluesuedeshoesandiboardedtheplane";
                 var buffer = Encoding.ASCII.GetBytes(data);
