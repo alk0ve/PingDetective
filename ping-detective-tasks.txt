@@ -2,7 +2,14 @@
 META: write tasks, not notes (i.e. "develop X", not "X should be different"), and make sure each task can be completed by itself
 
 TASKS:
+ - refactor Status enum to its own file, have isAccessible() return Status
+
  - test status tracker class in console app
+
+ - REWORK SimplePing:
+	- we ping serially & timeouts are up to 0.5s - two timeouts and we've wasted a second
+	- NEED to create several Ping objects, use their async API, then wait for all of them to finish, then release all of them (?)
+
 
  - make bare-bones UI implementation
 	- copy from SerialPop and remove anything irrelevant
@@ -11,6 +18,10 @@ TASKS:
 
  - TESTABILITY HACK: add #ifdef to isAccessible() to make it check for existence of files in a specific folder instead of pinging
 	- this way I can test the UI separately	
+
+	
+	- API change, probably - remove SimplePing, do everything in StatusTracker.ping()
+		- StatusTracker.ping() should still be blocking, but now should take only up to 0.5s
 
  - add ping 1/s (configurable)
  
